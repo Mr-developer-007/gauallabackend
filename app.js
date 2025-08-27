@@ -12,13 +12,13 @@ dotenv.config()
 const app= express()
 app.use(
   cors({
-    origin: "http://localhost:3000", 
+    origin: process.env.url, 
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true, // allow cookies
   })
 );
-app.use(express.json())
+app.use(express.json()) 
 app.use(cookieParser())
 app.use("/uploads", express.static("uploads"));
 

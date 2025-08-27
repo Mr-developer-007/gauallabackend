@@ -257,7 +257,7 @@ const getProductByCategory = async (req, res) => {
     return res.json({ success: false, message: error.message });
   }
 };
-
+ 
 // Helper function to safely parse JSON
 function safeParseJSON(str) {
   try {
@@ -270,9 +270,11 @@ function safeParseJSON(str) {
 const getSinglePRoduct=async(req,res)=>{
 const {slug}=req.params;
 
-const [[product]]= await pool.query(`SELECT * FROM `)
-
-
+const [[product]]= await pool.query(`SELECT * FROM products WHERE slug = ?`,[slug]);
+if(!product){
+return res.json({success:false})
+}
+return res.json({success:true,product});
 
 
 }
@@ -296,5 +298,6 @@ export const Categorycontroler={
    creatProduct,
    getallProduct,
    getProductByCategory,
+   getSinglePRoduct,
 }
 
