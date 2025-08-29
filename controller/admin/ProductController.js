@@ -282,6 +282,35 @@ return res.json({success:true,product});
 
 
 
+// Search products by name
+const searchProduct = async (req, res) => {
+  try {
+    const { search } = req.params;
+
+    if (!search) {
+      return res.status(400).json({ message: "Search term is required" });
+    }
+
+    const [products] = await pool.query(
+      "SELECT * FROM products WHERE name LIKE ?",
+      [`%${search}%`]
+    );
+
+    if (products.length === 0) {
+      return res.status(404).json({ message: "No products found" });
+    }
+
+    return res.json({
+      success: true,
+      count: products.length,
+      data: products,
+    });
+  } catch (error) {
+    console.error("Error searching products:", error);
+    return res.status(500).json({ message: "Server error" });
+  }
+};
+
 
 
 
@@ -299,5 +328,6 @@ export const Categorycontroler={
    getallProduct,
    getProductByCategory,
    getSinglePRoduct,
+   searchProduct,
 }
 

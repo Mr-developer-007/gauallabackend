@@ -7,5 +7,6 @@ route.post("/create",uploadsingleimg.array("images",9),Categorycontroler.creatPr
 route.get("/",Categorycontroler.getallProduct)
 route.get("/:category",Categorycontroler.getProductByCategory)
 route.get("/product/:slug",Categorycontroler.getSinglePRoduct)
+route.get("/product/search/:search",Categorycontroler.searchProduct)
 
 export default route;

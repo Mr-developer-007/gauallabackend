@@ -56,6 +56,8 @@ async function migrate() {
         name VARCHAR(255) NOT NULL,
         slug VARCHAR(255) NOT NULL,
         description TEXT DEFAULT NULL,
+        description2 TEXT DEFAULT NULL,
+
         price DECIMAL(8,2) NOT NULL,
         old_price DECIMAL(8,2) DEFAULT NULL,
         stock INT(11) NOT NULL,
