@@ -5,6 +5,7 @@ import CategoryRoute from "./Route/CategoryRouters.js"
 import ProductRoute from "./Route/ProductRouters.js"
 import BannerRoutes from "./Route/BannerRoutes.js"
 import loginSignup from "./Route/signupinRoutes.js"
+import CartRoute from "./Route/cartRoutes.js"
 import cookieParser from "cookie-parser";
 
 
@@ -15,7 +16,7 @@ app.use(
     origin: process.env.url, 
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
-    credentials: true, // allow cookies
+    credentials: true, 
   })
 );
 app.use(express.json()) 
@@ -42,8 +43,11 @@ app.use("/api/user/banner",BannerRoutes)
 app.use("/api/user/",loginSignup)
 
 
-// users
 
+
+
+// users
+app.use("/api/user/cart",CartRoute)
 
 
 

@@ -1,6 +1,9 @@
+import dotenv from "dotenv";
+dotenv.config()
 import pool from "../../config.js";
 import { compairPassword, hashedpassword } from "../../helper/hashing.js";
 import { createToken } from "../../helper/Jwttoken.js";
+
 
 export const SignupUser = async (req, res) => {
   try {
@@ -32,11 +35,11 @@ const [result]=    await pool.query(
 const token = createToken(userId);
 
 res.cookie("user", token, {
-  path:'/',
+ path:'/',
         httpOnly:true,
         expires: new Date(Date.now()+7000 *86400*5),
         sameSite:'none',
-      secure:true, 
+      secure:true,
 })
 
 
@@ -97,11 +100,11 @@ export const LoginUser = async (req, res) => {
 
     // set cookie
     res.cookie("user", token, {
-      path: "/",
-      httpOnly: true,
-      expires: new Date(Date.now() + 90 * 24 * 60 * 60 * 1000), // 90 days
-      sameSite: "none",
-      secure: true, // set false in dev without https
+     path:'/',
+        httpOnly:true,
+        expires: new Date(Date.now()+7000 *86400*5),
+        sameSite:'none',
+      secure:true,
     });
 
     return res.status(200).json({
@@ -115,9 +118,26 @@ export const LoginUser = async (req, res) => {
   }
 };
 
+export const logoutUser=async (req,res)=>{
+  res.cookie("user", "", {
+      path: "/",
+      httpOnly: true,
+      expires: new Date(Date.now()), // 90 days
+      sameSite: "none",
+      secure: true, 
+    });
 
+    return res.status(200).json({
+      success: true,
+      message: "Logout successful",
+      
+    });
+}
 
-
+const getUser= async(req,res)=>{
+  const {user}=req;
+  return res.json({user,success:true})
+}
 
 
 
@@ -127,7 +147,9 @@ export const LoginUser = async (req, res) => {
 
 export const userController={
     SignupUser,
-    LoginUser
+    LoginUser,
+    logoutUser,
+    getUser
 }
 
 
