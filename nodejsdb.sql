@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 01, 2025 at 12:45 AM
+-- Generation Time: Sep 02, 2025 at 03:34 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -58,10 +58,10 @@ CREATE TABLE `banners` (
 --
 
 INSERT INTO `banners` (`id`, `image`, `created_at`, `updated_at`) VALUES
-(6, '1756233192458-56344036.jpg', '2025-08-26 18:33:12', '2025-08-26 18:33:12'),
-(7, '1756233207226-828531685.jpg', '2025-08-26 18:33:27', '2025-08-26 18:33:27'),
-(8, '1756233214858-642353593.jpg', '2025-08-26 18:33:34', '2025-08-26 18:33:34'),
-(9, '1756233227859-689577192.jpg', '2025-08-26 18:33:47', '2025-08-26 18:33:47');
+(10, '1756819825983-822041048.jpg', '2025-08-26 18:33:27', '2025-08-26 18:33:27'),
+(11, '1756233227859-689577192.jpg', '2025-08-26 18:33:34', '2025-09-02 13:32:48'),
+(12, '1756233214858-642353593.jpg', '2025-08-27 18:33:34', '2025-09-02 13:32:50'),
+(15, '1756233207226-828531685.jpg', '2025-08-27 18:33:27', '2025-09-02 13:32:44');
 
 -- --------------------------------------------------------
 
@@ -277,7 +277,7 @@ ALTER TABLE `addresses`
 -- AUTO_INCREMENT for table `banners`
 --
 ALTER TABLE `banners`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `carts`
