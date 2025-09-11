@@ -7,7 +7,9 @@ import BannerRoutes from "./Route/BannerRoutes.js"
 import loginSignup from "./Route/signupinRoutes.js"
 import CartRoute from "./Route/cartRoutes.js"
 import cookieParser from "cookie-parser";
-
+import AddressRoute from "./Route/addressRoutes.js"
+import orderRoute from "./Route/orderRoutes.js"
+import blogRoute from "./Route/blogRoute.js"
 
 dotenv.config()
 const app= express()
@@ -31,8 +33,9 @@ app.get("/",async(req,res)=>{
 
  //admin
 app.use("/admin/category",CategoryRoute);
-app.use("/admin/product",ProductRoute);
+app.use("/admin/product",ProductRoute); 
 app.use("/admin/banner",BannerRoutes);
+app.use("/admin/blog",blogRoute)
 
 
 //all
@@ -48,6 +51,9 @@ app.use("/api/user/",loginSignup)
 
 // users
 app.use("/api/user/cart",CartRoute)
+app.use("/api/user/address",AddressRoute)
+app.use("/api/user/order",orderRoute)
+
 
 
 
