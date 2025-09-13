@@ -216,7 +216,7 @@ const getProductByCategory = async (req, res) => {
         return res.json({ success: false, message: "Category not found" });
       }
 
-      // 2. Get products
+      
       const [products] = await pool.query(
         `SELECT 
             p.id,

@@ -50,7 +50,7 @@ res.cookie("user", token, {
 
 
 
-    return res.status(201).json({success:true,  message: "User registered successfully" });
+    return res.status(201).json({success:true, token , message: "User registered successfully" });
   } catch (error) {
     console.error("Signup error:", error);
     return res.status(500).json({success:false,  message: "Internal server error" });
@@ -108,7 +108,7 @@ export const LoginUser = async (req, res) => {
     });
 
     return res.status(200).json({
-      success: true,
+      success: true,token,
       message: "Login successful",
       
     });

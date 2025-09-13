@@ -3,7 +3,7 @@ import { TokenVerify } from "../helper/Jwttoken.js";
 
 export const userMiddleware = async (req, res, next) => {
   try {
-    const { user } = req.cookies;
+    const user  = req.cookies.user || req.headers.authorization?.split(" ")[1];
 
     // Check if cookie exists
     if (!user) {
