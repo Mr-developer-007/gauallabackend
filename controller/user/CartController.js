@@ -15,6 +15,13 @@ export const AddtoCart = async (req, res) => {
         .json({ success: false, message: "Product ID and price are required" });
     }
 
+
+    const [[alreadyincart]]= await pool.query(`SELECT * FROM carts where product_id = ? 
+      AND user_id = ? `,[product_id,user.id])
+if(alreadyincart){
+    return res
+        .json({ success: true, message: "Allready in cart" });
+}
     await pool.execute(
       `INSERT INTO carts (product_id, price, user_id) VALUES (?, ?, ?)`,
       [product_id, price, user.id]
@@ -99,7 +106,6 @@ export const UpdateCart = async (req, res) => {
       return res.status(404).json({ success: false, message: "Cart not found" });
     }
 
-    // 2. Update quantity
     let newQuantity = cart.quantity;
     if (increment) {
       newQuantity += 1;
